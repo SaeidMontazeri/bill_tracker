@@ -1,22 +1,6 @@
-from flask import Flask,jsonify
 import pandas as pd
 import openpyxl
 import pdfplumber
-
-app = Flask(__name__)
-
-
-@app.route('/v1/process')
-def process():
-    print('we are in process!')
-    data = {'message':'processed'}
-    return jsonify(data) , 200
-
-
-
-def import_bill_database_from_excel(filepath):
-    '''gets an excel file name and imports data from it'''
-    df = pd.read_excel('filepath',0)
 
 def pdf_to_dictionary(filepath,number_usage):
     
@@ -44,14 +28,3 @@ def pdf_to_dictionary(filepath,number_usage):
                 usage = int(''.join(sections[0].split(',')))
                 number_usage[sections[12][2:]] = usage
 
-
-
-
-
-
-def make_numbers_list():
-    pass
-
-
-if __name__ == '__main__':
-    app.run('0.0.0.0','5000',debug=True)
