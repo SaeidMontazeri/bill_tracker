@@ -22,13 +22,14 @@ class Ui_Dialog(object):
         self.graphicsView = QtWidgets.QGraphicsView(Dialog)
         self.graphicsView.setGeometry(QtCore.QRect(0, 0, 161, 181))
         self.graphicsView.setObjectName("graphicsView")
-        path = 'C:\\Users\\ADMIN\\Desktop\\Project\\OIP.png'
-        image = QtGui.QPixmap(path)
+        image_path = 'ISTT.png'
+        image = QtGui.QPixmap(image_path)
         scene = QtWidgets.QGraphicsScene()
         image_item = QtWidgets.QGraphicsPixmapItem(image)
         scene.addItem(image_item)
+        image_item.setScale(0.31)
         self.graphicsView.setScene(scene)
-        self.graphicsView.fitInView(scene.sceneRect(),QtCore.Qt.KeepAspectRatioByExpanding)
+        #self.graphicsView.fitInView(scene.sceneRect(),QtCore.Qt.KeepAspectRatio)
         self.run = QtWidgets.QPushButton(Dialog)
         self.run.setGeometry(QtCore.QRect(340, 370, 93, 28))
         self.run.setObjectName("run")
