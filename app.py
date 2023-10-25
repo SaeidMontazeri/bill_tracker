@@ -133,6 +133,12 @@ class Ui_Dialog(object):
         self.textBrowser_bill.clear()
         path_files.bill_addresses = []
     
+    
+    def message_box(self,message):
+        msg = QtWidgets.QMessageBox()
+        msg.setText(message)
+        msg.exec_()
+
     def pdf_to_dictionary(self,filepath,number_usage):
     
         '''convert pdf to txt'''
@@ -161,6 +167,7 @@ class Ui_Dialog(object):
         return number_usage
     
     def code_process(self):
+        
         number_usage = {}
         bill_addresses = path_files.bill_addresses
         for filepath in bill_addresses:
@@ -177,6 +184,7 @@ class Ui_Dialog(object):
         wb_mali = openpyxl.load_workbook(pathfile_mali)
         sheet_mali = wb_mali.active
         
+
         for n_row_mali in range(n_rows_mali):
             if df_mali.iloc[n_row_mali,15] == 120317:
                 company_name  = df_mali.iloc[n_row_mali,4]
@@ -190,9 +198,12 @@ class Ui_Dialog(object):
                     usage += number_usage.get(number,0)
                 point_cell_mali = 'Q' +str(n_row_mali+2)
                 sheet_mali[point_cell_mali] = usage
-        save_loc = 'C:\\Users\\ADMIN\\Desktop\\مالی جدید.xlsx'
-        wb_mali.save(save_loc)
-        print('DONE!') #TODO: add a lable to GUI and do it there
+        save_loc = 'C:\\Users\\ADMIN\\Desktop'
+        file_name = 'مالی جدید'
+        file_type = '.xlsx'
+        wb_mali.save(save_loc+file_name+file_type)
+        status = f'قبوض تلفن شما با موفقیت صادر شد و فایل نهایی در آدرس زیر ذخیره گردید\n{save_loc}'
+        self.message_box(status)
         
 
     def retranslateUi(self, Dialog):
