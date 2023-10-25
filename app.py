@@ -29,7 +29,6 @@ class Ui_Dialog(object):
         scene.addItem(image_item)
         image_item.setScale(0.31)
         self.graphicsView.setScene(scene)
-        #self.graphicsView.fitInView(scene.sceneRect(),QtCore.Qt.KeepAspectRatio)
         self.run = QtWidgets.QPushButton(Dialog)
         self.run.setGeometry(QtCore.QRect(340, 370, 93, 28))
         self.run.setObjectName("run")
@@ -191,8 +190,9 @@ class Ui_Dialog(object):
                     usage += number_usage.get(number,0)
                 point_cell_mali = 'Q' +str(n_row_mali+2)
                 sheet_mali[point_cell_mali] = usage
-        wb_mali.save(pathfile_mali)
-        print('DONE!')
+        save_loc = 'C:\\Users\\ADMIN\\Desktop\\مالی جدید.xlsx'
+        wb_mali.save(save_loc)
+        print('DONE!') #TODO: add a lable to GUI and do it there
         
 
     def retranslateUi(self, Dialog):
