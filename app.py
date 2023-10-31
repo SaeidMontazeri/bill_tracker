@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import path_files 
+import path_files
 import pdfplumber
 import pandas as pd
 import openpyxl
@@ -18,9 +18,76 @@ import openpyxl
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(776, 457)
-        self.graphicsView = QtWidgets.QGraphicsView(Dialog)
-        self.graphicsView.setGeometry(QtCore.QRect(0, 0, 161, 181))
+        Dialog.resize(776, 459)
+        Dialog.setMouseTracking(False)
+        Dialog.setAcceptDrops(False)
+        Dialog.setAutoFillBackground(False)
+        self.tabWidget = QtWidgets.QTabWidget(Dialog)
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 781, 461))
+        font = QtGui.QFont()
+        font.setFamily("MS Shell Dlg 2")
+        self.tabWidget.setFont(font)
+        self.tabWidget.setTabletTracking(False)
+        self.tabWidget.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.tabWidget.setAutoFillBackground(False)
+        self.tabWidget.setTabPosition(QtWidgets.QTabWidget.South)
+        self.tabWidget.setTabShape(QtWidgets.QTabWidget.Rounded)
+        self.tabWidget.setIconSize(QtCore.QSize(20, 20))
+        self.tabWidget.setElideMode(QtCore.Qt.ElideNone)
+        self.tabWidget.setUsesScrollButtons(True)
+        self.tabWidget.setDocumentMode(False)
+        self.tabWidget.setTabsClosable(False)
+        self.tabWidget.setMovable(False)
+        self.tabWidget.setTabBarAutoHide(False)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab_3 = QtWidgets.QWidget()
+        self.tab_3.setObjectName("tab_3")
+        self.label_2 = QtWidgets.QLabel(self.tab_3)
+        self.label_2.setGeometry(QtCore.QRect(600, 210, 111, 21))
+        self.label_2.setObjectName("label_2")
+        self.reset_numbers = QtWidgets.QPushButton(self.tab_3)
+        self.reset_numbers.setGeometry(QtCore.QRect(520, 170, 31, 28))
+        self.reset_numbers.setObjectName("reset_numbers")
+        self.label_4 = QtWidgets.QLabel(self.tab_3)
+        self.label_4.setGeometry(QtCore.QRect(600, 130, 111, 21))
+        self.label_4.setObjectName("label_4")
+        self.run = QtWidgets.QPushButton(self.tab_3)
+        self.run.setGeometry(QtCore.QRect(640, 250, 71, 28))
+        self.run.setObjectName("run")
+        self.reset_bill = QtWidgets.QPushButton(self.tab_3)
+        self.reset_bill.setGeometry(QtCore.QRect(520, 210, 31, 28))
+        self.reset_bill.setObjectName("reset_bill")
+        self.add_numbers = QtWidgets.QPushButton(self.tab_3)
+        self.add_numbers.setGeometry(QtCore.QRect(560, 170, 31, 28))
+        self.add_numbers.setObjectName("add_numbers")
+        self.label_5 = QtWidgets.QLabel(self.tab_3)
+        self.label_5.setGeometry(QtCore.QRect(560, 40, 201, 71))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.label_5.setFont(font)
+        self.label_5.setObjectName("label_5")
+        self.reset_mali = QtWidgets.QPushButton(self.tab_3)
+        self.reset_mali.setGeometry(QtCore.QRect(520, 130, 31, 28))
+        self.reset_mali.setObjectName("reset_mali")
+        self.label_3 = QtWidgets.QLabel(self.tab_3)
+        self.label_3.setGeometry(QtCore.QRect(640, 170, 71, 21))
+        self.label_3.setObjectName("label_3")
+        self.add_mali = QtWidgets.QPushButton(self.tab_3)
+        self.add_mali.setGeometry(QtCore.QRect(560, 130, 31, 28))
+        self.add_mali.setFlat(False)
+        self.add_mali.setObjectName("add_mali")
+        self.label = QtWidgets.QLabel(self.tab_3)
+        self.label.setGeometry(QtCore.QRect(230, -10, 531, 81))
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.add_bill = QtWidgets.QPushButton(self.tab_3)
+        self.add_bill.setGeometry(QtCore.QRect(560, 210, 31, 28))
+        self.add_bill.setObjectName("add_bill")
+        self.graphicsView = QtWidgets.QGraphicsView(self.tab_3)
+        self.graphicsView.setGeometry(QtCore.QRect(-10, -10, 171, 191))
+        self.graphicsView.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.graphicsView.setObjectName("graphicsView")
         image_path = 'ISTT.png'
         image = QtGui.QPixmap(image_path)
@@ -29,58 +96,66 @@ class Ui_Dialog(object):
         scene.addItem(image_item)
         image_item.setScale(0.31)
         self.graphicsView.setScene(scene)
-        self.run = QtWidgets.QPushButton(Dialog)
-        self.run.setGeometry(QtCore.QRect(340, 370, 93, 28))
-        self.run.setObjectName("run")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(230, -10, 531, 81))
+        self.log = QtWidgets.QTextBrowser(self.tab_3)
+        self.log.setGeometry(QtCore.QRect(0, 330, 771, 101))
+        self.log.setObjectName("log")
+        self.mali_lable = QtWidgets.QLabel(self.tab_3)
+        self.mali_lable.setGeometry(QtCore.QRect(360, 130, 151, 20))
+        self.mali_lable.setObjectName("mali_lable")
+        self.numbers_lable = QtWidgets.QLabel(self.tab_3)
+        self.numbers_lable.setGeometry(QtCore.QRect(360, 170, 151, 20))
+        self.numbers_lable.setObjectName("numbers_lable")
+        self.bill_lable = QtWidgets.QLabel(self.tab_3)
+        self.bill_lable.setGeometry(QtCore.QRect(360, 210, 151, 71))
+        self.bill_lable.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.bill_lable.setObjectName("bill_lable")
+        self.tabWidget.addTab(self.tab_3, "")
+        self.tab_4 = QtWidgets.QWidget()
+        self.tab_4.setObjectName("tab_4")
+        self.graphicsView_2 = QtWidgets.QGraphicsView(self.tab_4)
+        self.graphicsView_2.setGeometry(QtCore.QRect(-10, -10, 171, 191))
+        self.graphicsView_2.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.graphicsView_2.setObjectName("graphicsView_2")
+        self.graphicsView_2.setScene(scene)
+        self.label_6 = QtWidgets.QLabel(self.tab_4)
+        self.label_6.setGeometry(QtCore.QRect(230, -10, 531, 81))
         font = QtGui.QFont()
         font.setPointSize(18)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(150, 240, 81, 21))
-        self.label_2.setObjectName("label_2")
-        self.add_bill = QtWidgets.QPushButton(Dialog)
-        self.add_bill.setGeometry(QtCore.QRect(90, 240, 51, 28))
-        self.add_bill.setObjectName("add_bill")
-        self.reset_bill = QtWidgets.QPushButton(Dialog)
-        self.reset_bill.setGeometry(QtCore.QRect(30, 240, 51, 28))
-        self.reset_bill.setObjectName("reset_bill")
-        self.label_3 = QtWidgets.QLabel(Dialog)
-        self.label_3.setGeometry(QtCore.QRect(400, 240, 81, 21))
-        self.label_3.setObjectName("label_3")
-        self.add_numbers = QtWidgets.QPushButton(Dialog)
-        self.add_numbers.setGeometry(QtCore.QRect(340, 240, 51, 28))
-        self.add_numbers.setObjectName("add_numbers")
-        self.reset_numbers = QtWidgets.QPushButton(Dialog)
-        self.reset_numbers.setGeometry(QtCore.QRect(280, 240, 51, 28))
-        self.reset_numbers.setObjectName("reset_numbers")
-        self.label_4 = QtWidgets.QLabel(Dialog)
-        self.label_4.setGeometry(QtCore.QRect(650, 240, 81, 21))
-        self.label_4.setObjectName("label_4")
-        self.add_mali = QtWidgets.QPushButton(Dialog)
-        self.add_mali.setGeometry(QtCore.QRect(610, 240, 51, 28))
-        self.add_mali.setFlat(False)
-        self.add_mali.setObjectName("add_mali")
-        self.reset_mali = QtWidgets.QPushButton(Dialog)
-        self.reset_mali.setGeometry(QtCore.QRect(550, 240, 51, 28))
-        self.reset_mali.setObjectName("reset_mali")
-        self.textBrowser_bill = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_bill.setGeometry(QtCore.QRect(30, 280, 201, 71))
-        self.textBrowser_bill.setObjectName("textBrowser_bill")
-        self.textBrowser_numbers = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_numbers.setGeometry(QtCore.QRect(280, 280, 201, 71))
-        self.textBrowser_numbers.setObjectName("textBrowser_numbers")
-        self.textBrowser_mali = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_mali.setGeometry(QtCore.QRect(540, 280, 201, 71))
-        self.textBrowser_mali.setObjectName("textBrowser_mali")
-        self.label_5 = QtWidgets.QLabel(Dialog)
-        self.label_5.setGeometry(QtCore.QRect(560, 40, 201, 71))
+        self.label_6.setFont(font)
+        self.label_6.setObjectName("label_6")
+        self.label_7 = QtWidgets.QLabel(self.tab_4)
+        self.label_7.setGeometry(QtCore.QRect(560, 40, 201, 71))
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.version_lable = QtWidgets.QLabel(self.tab_4)
+        self.version_lable.setGeometry(QtCore.QRect(654, 110, 101, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.version_lable.setFont(font)
+        self.version_lable.setObjectName("version_lable")
+        self.version_text_2 = QtWidgets.QLabel(self.tab_4)
+        self.version_text_2.setGeometry(QtCore.QRect(650, 130, 101, 20))
+        self.version_text_2.setText("")
+        self.version_text_2.setObjectName("version_text_2")
+        self.developer_lable = QtWidgets.QLabel(self.tab_4)
+        self.developer_lable.setGeometry(QtCore.QRect(470, 350, 261, 31))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.developer_lable.setFont(font)
+        self.developer_lable.setObjectName("developer_lable")
+        self.developer_lable_2 = QtWidgets.QLabel(self.tab_4)
+        self.developer_lable_2.setGeometry(QtCore.QRect(490, 390, 231, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.developer_lable_2.setFont(font)
+        self.developer_lable_2.setObjectName("developer_lable_2")
+        self.label_8 = QtWidgets.QLabel(self.tab_4)
+        self.label_8.setGeometry(QtCore.QRect(270, 160, 471, 171))
+        self.label_8.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_8.setObjectName("label_8")
+        self.tabWidget.addTab(self.tab_4, "")
 
         self.retranslateUi(Dialog)
         self.run.clicked.connect(self.code_process) # type: ignore
@@ -90,6 +165,7 @@ class Ui_Dialog(object):
         self.reset_bill.clicked.connect(self.reset_bill_process) # type: ignore
         self.reset_mali.clicked.connect(self.reset_mali_process) # type: ignore
         self.reset_numbers.clicked.connect(self.reset_numbers_process) # type: ignore
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def add_mali_process(self):
@@ -98,10 +174,12 @@ class Ui_Dialog(object):
         file_name = file_path.split('/')[-1]
         if file_path:
             path_files.mali_address = file_path
-            self.textBrowser_mali.setPlainText(file_name + ' loaded')
+            if self.mali_lable.text() != '':
+                self.log.append(self.mali_lable.text() + ' canceled')
+            self.mali_lable.setText(file_name)
+            self.log.append(file_name+' loaded')
 
-            
-            
+
 
     def add_numbers_process(self):
         optins = QtWidgets.QFileDialog.Options()
@@ -109,7 +187,11 @@ class Ui_Dialog(object):
         file_name = file_path.split('/')[-1]
         if file_path:
             path_files.numbers_address = file_path
-            self.textBrowser_numbers.setPlainText(file_name + ' loaded')
+            if self.numbers_lable.text() != '':
+                self.log.append(self.numbers_lable.text() + ' canceled')
+            self.numbers_lable.setText(file_name)
+            self.log.append(file_name+' loaded')
+
 
     def add_bill_process(self):
         optins = QtWidgets.QFileDialog.Options()
@@ -117,42 +199,58 @@ class Ui_Dialog(object):
         file_name = file_path.split('/')[-1]
         if file_path:
             path_files.bill_addresses.append(file_path)
-            current_text = self.textBrowser_bill.toPlainText()
-            updated_text = current_text + file_name + ' loaded' + '\n'
-            self.textBrowser_bill.setPlainText(updated_text)
-    
+            self.log.append(file_name+' loaded')
+            current_text = self.bill_lable.text()
+            self.bill_lable.setText(current_text + file_name + '\n')
+
+
     def reset_mali_process(self):
-        self.textBrowser_mali.clear()
-        path_files.mali_address = ''
+        if self.mali_lable.text() != '':
+            file_name = self.mali_lable.text()
+            self.log.append(file_name+' canceled')
+            self.mali_lable.clear()
+            path_files.mali_address = ''
+        
+
 
     def reset_numbers_process(self):
-        self.textBrowser_numbers.clear()
-        path_files.numbers_address = ''
+        if self.numbers_lable.text() != '':
+            file_name = self.numbers_lable.text()
+            self.log.append(file_name+' canceled')
+            self.numbers_lable.clear()
+            path_files.numbers_address = ''
+
 
     def reset_bill_process(self):
-        self.textBrowser_bill.clear()
-        path_files.bill_addresses = []
-    
-    
+        if self.bill_lable.text() != '':
+            text = ' canceled \n'.join(self.bill_lable.text().split('\n'))
+            self.log.append(text[:-2])
+            self.bill_lable.clear()
+            path_files.bill_addresses = []
+
     def message_box(self,message):
         msg = QtWidgets.QMessageBox()
         msg.setText(message)
         msg.exec_()
 
+    def about(self):
+        message = ''
+        self.message_box(message)
+
     def pdf_to_dictionary(self,filepath,number_usage):
-    
+
         '''convert pdf to txt'''
         txt = ''
         with pdfplumber.open(filepath) as pdf:
             for page in pdf.pages:
                 txt += page.extract_text()
-        
+
         '''delete useless data'''
         file_lines = txt.split('\n')
         sep = '\n'.join(file_lines[1:12])
         data = txt.split(sep)
         txt = ''.join(data)
-    
+
         '''convert txt to dictionary'''
         file_lines = txt.split('\n')
         ending_point = 'ﻞﮐ ﻊﻤﺟ'
@@ -165,67 +263,83 @@ class Ui_Dialog(object):
                     usage = int(''.join(sections[0].split(',')))
                     number_usage[sections[12][2:]] = usage
         return number_usage
-    
+
     def code_process(self):
-        
-        number_usage = {}
-        bill_addresses = path_files.bill_addresses
-        for filepath in bill_addresses:
-            number_usage = self.pdf_to_dictionary(filepath,number_usage)
 
-        pathfile_mali = path_files.mali_address
-        pathfile_numbers = path_files.numbers_address
-        df_mali = pd.read_excel(pathfile_mali)
-        n_rows_mali, n_columns_mali = df_mali.shape
+        try:
+            number_usage = {}
+            bill_addresses = path_files.bill_addresses
+            for filepath in bill_addresses:
+                number_usage = self.pdf_to_dictionary(filepath,number_usage)
 
-        df_numbers = pd.read_excel(pathfile_numbers)
-        n_rows_numbers, n_columns_numbers = df_numbers.shape
+            pathfile_mali = path_files.mali_address
+            pathfile_numbers = path_files.numbers_address
+            df_mali = pd.read_excel(pathfile_mali)
+            n_rows_mali, n_columns_mali = df_mali.shape
 
-        wb_mali = openpyxl.load_workbook(pathfile_mali)
-        sheet_mali = wb_mali.active
-        
+            df_numbers = pd.read_excel(pathfile_numbers)
+            n_rows_numbers, n_columns_numbers = df_numbers.shape
 
-        for n_row_mali in range(n_rows_mali):
-            if df_mali.iloc[n_row_mali,15] == 120317:
-                company_name  = df_mali.iloc[n_row_mali,4]
-                company_id = df_mali.iloc[n_row_mali,6]
-                numbers = []
-                usage = 0
-                for n_row_numbers in range(n_rows_numbers):
-                    if df_numbers.iloc[n_row_numbers,4] == company_name:
-                        numbers.append(str(df_numbers.iloc[n_row_numbers,1]))
-                for number in numbers:
-                    usage += number_usage.get(number,0)
-                point_cell_mali = 'Q' +str(n_row_mali+2)
-                sheet_mali[point_cell_mali] = usage
-        save_loc = 'C:\\Users\\ADMIN\\Desktop'
-        file_name = 'مالی جدید'
-        file_type = '.xlsx'
-        wb_mali.save(save_loc+file_name+file_type)
-        status = f'قبوض تلفن شما با موفقیت صادر شد و فایل نهایی در آدرس زیر ذخیره گردید\n{save_loc}'
-        self.message_box(status)
-        
+            wb_mali = openpyxl.load_workbook(pathfile_mali)
+            sheet_mali = wb_mali.active
+
+
+            for n_row_mali in range(n_rows_mali):
+                if df_mali.iloc[n_row_mali,15] == 120317:
+                    company_name  = df_mali.iloc[n_row_mali,4]
+                    company_id = df_mali.iloc[n_row_mali,6]
+                    numbers = []
+                    usage = 0
+                    for n_row_numbers in range(n_rows_numbers):
+                        if df_numbers.iloc[n_row_numbers,4] == company_name:
+                            numbers.append(str(df_numbers.iloc[n_row_numbers,1]))
+                    for number in numbers:
+                        usage += number_usage.get(number,0)
+                    point_cell_mali = 'Q' +str(n_row_mali+2)
+                    sheet_mali[point_cell_mali] = usage
+            save_loc = 'C:\\Users\\ADMIN\\Desktop'
+            file_name = 'مالی جدید'
+            file_type = '.xlsx'
+            wb_mali.save(save_loc+file_name+file_type)
+            status = f'قبوض تلفن شما با موفقیت صادر شد و فایل نهایی در آدرس زیر ذخیره گردید\n{save_loc}'
+            self.message_box(status)
+            self.log.append('completed successfully')
+        except:
+            self.message_box('در وارد کردن فایل ها دچار خطا شدید\nمجددا تلاش کنید')
+
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.run.setText(_translate("Dialog", "Run"))
-        self.label.setText(_translate("Dialog", "سیستم صدور قبوض تلفن واحد های فناور"))
-        self.label_2.setText(_translate("Dialog", "قبض مخابرات"))
-        self.add_bill.setText(_translate("Dialog", "Add"))
-        self.reset_bill.setText(_translate("Dialog", "Reset"))
-        self.label_3.setText(_translate("Dialog", "واگذاری خطوط"))
-        self.add_numbers.setText(_translate("Dialog", "Add"))
-        self.reset_numbers.setText(_translate("Dialog", "Reset"))
-        self.label_4.setText(_translate("Dialog", "مالی جدید"))
-        self.add_mali.setText(_translate("Dialog", "Add"))
-        self.reset_mali.setText(_translate("Dialog", "Reset"))
+        Dialog.setWindowTitle(_translate("Dialog", "صدور قبوض"))
+        self.label_2.setText(_translate("Dialog", "فایل قبوض مخابرات"))
+        self.reset_numbers.setText(_translate("Dialog", "x"))
+        self.label_4.setText(_translate("Dialog", "فایل مالی "))
+        self.run.setText(_translate("Dialog", "اجرا"))
+        self.reset_bill.setText(_translate("Dialog", "x"))
+        self.add_numbers.setText(_translate("Dialog", "+"))
         self.label_5.setText(_translate("Dialog", "(گروه فناوری اطلاعات)"))
+        self.reset_mali.setText(_translate("Dialog", "x"))
+        self.label_3.setText(_translate("Dialog", "فایل خطوط "))
+        self.add_mali.setText(_translate("Dialog", "+"))
+        self.label.setText(_translate("Dialog", "سیستم صدور قبوض تلفن واحد های فناور"))
+        self.add_bill.setText(_translate("Dialog", "+"))
+        self.mali_lable.setText(_translate("Dialog", ""))
+        self.numbers_lable.setText(_translate("Dialog", ""))
+        self.bill_lable.setText(_translate("Dialog", ""))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Dialog", "صفحه اصلی "))
+        self.label_6.setText(_translate("Dialog", "سیستم صدور قبوض تلفن واحد های فناور"))
+        self.label_7.setText(_translate("Dialog", "(گروه فناوری اطلاعات)"))
+        self.version_lable.setText(_translate("Dialog", "نسخه 1.0"))
+        self.developer_lable.setText(_translate("Dialog", "توسعه دهنده : سعید منتظری"))
+        self.developer_lable_2.setText(_translate("Dialog", "saeidmontazeri@outlook.com"))
+        self.label_8.setText(_translate("Dialog", "TextLabel"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Dialog", "درباره ما"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon('ISTT.ico'))
     Dialog = QtWidgets.QDialog()
     ui = Ui_Dialog()
     ui.setupUi(Dialog)
