@@ -151,10 +151,11 @@ class Ui_Dialog(object):
         font.setPointSize(11)
         self.developer_lable_2.setFont(font)
         self.developer_lable_2.setObjectName("developer_lable_2")
-        self.label_8 = QtWidgets.QLabel(self.tab_4)
-        self.label_8.setGeometry(QtCore.QRect(270, 160, 471, 171))
-        self.label_8.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.label_8.setObjectName("label_8")
+        self.textBrowser = QtWidgets.QTextBrowser(self.tab_4)
+        self.textBrowser.setGeometry(QtCore.QRect(180, 141, 581, 211))
+        self.textBrowser.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.textBrowser.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.textBrowser.setObjectName("textBrowser")
         self.tabWidget.addTab(self.tab_4, "")
 
         self.retranslateUi(Dialog)
@@ -228,14 +229,12 @@ class Ui_Dialog(object):
             self.bill_lable.clear()
             path_files.bill_addresses = []
 
+
     def message_box(self,message):
         msg = QtWidgets.QMessageBox()
         msg.setText(message)
         msg.exec_()
 
-    def about(self):
-        message = ''
-        self.message_box(message)
 
     def pdf_to_dictionary(self,filepath,number_usage):
 
@@ -326,13 +325,25 @@ class Ui_Dialog(object):
         self.mali_lable.setText(_translate("Dialog", ""))
         self.numbers_lable.setText(_translate("Dialog", ""))
         self.bill_lable.setText(_translate("Dialog", ""))
+        self.textBrowser.setHtml(_translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">برای اجرای صحیح برنامه از صحت فایل های بارگذاری شده اطمینان یابید</span></p>\n"
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">ابتدا فایل اکسل مالی را بارگذاری نمایید</span></p>\n"
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">سپس فایل اکسل واگذاری خطوط را بارگذاری کنید</span></p>\n"
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">در قدم بعد فایل های pdf متنی قبوض مخابرات را بارگذاری کنید</span></p>\n"
+"<p dir=\'rtl\' style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
+"<p dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">در آخر روی دکمه &quot;اجرا&quot; کلیک کنید و منتظر بمانید تا فایل نهایی شما حاضر شود</span></p></body></html>"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Dialog", "صفحه اصلی "))
         self.label_6.setText(_translate("Dialog", "سیستم صدور قبوض تلفن واحد های فناور"))
         self.label_7.setText(_translate("Dialog", "(گروه فناوری اطلاعات)"))
         self.version_lable.setText(_translate("Dialog", "نسخه 1.0"))
         self.developer_lable.setText(_translate("Dialog", "توسعه دهنده : سعید منتظری"))
         self.developer_lable_2.setText(_translate("Dialog", "saeidmontazeri@outlook.com"))
-        self.label_8.setText(_translate("Dialog", "TextLabel"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Dialog", "درباره ما"))
 
 
