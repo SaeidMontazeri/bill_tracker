@@ -296,10 +296,10 @@ class Ui_Dialog(object):
                         usage += number_usage.get(number,0)
                     point_cell_mali = 'Q' +str(n_row_mali+2)
                     sheet_mali[point_cell_mali] = usage
-            save_loc = 'C:\\Users\\ADMIN\\Desktop'
-            file_name = 'مالی جدید'
+            save_loc = '/'.join(pathfile_mali.split('/')[:-1])
+            file_name = 'مالی'
             file_type = '.xlsx'
-            wb_mali.save(save_loc+file_name+file_type)
+            wb_mali.save(save_loc+'/'+file_name+file_type)
             status = f'قبوض تلفن شما با موفقیت صادر شد و فایل نهایی در آدرس زیر ذخیره گردید\n{save_loc}'
             self.message_box(status)
             self.log.append('completed successfully')
