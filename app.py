@@ -290,7 +290,7 @@ class Ui_Dialog(object):
                     numbers = []
                     usage = 0
                     for n_row_numbers in range(n_rows_numbers):
-                        if df_numbers.iloc[n_row_numbers,4] == company_name:
+                        if df_numbers.iloc[n_row_numbers,3] == company_id:
                             numbers.append(str(df_numbers.iloc[n_row_numbers,1]))
                     for number in numbers:
                         usage += number_usage.get(number,0)
