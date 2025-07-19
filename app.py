@@ -258,9 +258,9 @@ class Ui_Dialog(object):
                 break
             else:
                 sections = line.split(' ')
-                if len(sections) > 12:
+                if len(sections) > 11:
                     usage = int(''.join(sections[0].split(',')))
-                    number_usage[sections[12][2:]] = usage
+                    number_usage[sections[11][2:]] = usage
         return number_usage
 
     def code_process(self):
