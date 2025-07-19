@@ -341,7 +341,7 @@ class Ui_Dialog(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("Dialog", "صفحه اصلی "))
         self.label_6.setText(_translate("Dialog", "سیستم صدور قبوض تلفن واحد های فناور"))
         self.label_7.setText(_translate("Dialog", "(گروه فناوری اطلاعات)"))
-        self.version_lable.setText(_translate("Dialog", "نسخه 1.0"))
+        self.version_lable.setText(_translate("Dialog", "نسخه 1.1"))
         self.developer_lable.setText(_translate("Dialog", "توسعه دهنده : سعید منتظری"))
         self.developer_lable_2.setText(_translate("Dialog", "saeidmontazeri@outlook.com"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("Dialog", "درباره ما"))
